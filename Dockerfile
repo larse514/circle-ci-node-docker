@@ -1,16 +1,9 @@
-FROM circleci/node:argon-stretch-browsers
-MAINTAINER larse514
+FROM circleci/node:8.4.0
+MAINTAINER andrew.larsen@vernonsoftwaresolutoins.com
 
 # Install awscli
-# http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html
-RUN wget "s3.amazonaws.com/aws-cli/awscli-bundle.zip" -O "awscli-bundle.zip" && \
-    unzip awscli-bundle.zip && \
-    # Workaround to get awscli to work properly
-    # https://github.com/aws/aws-cli/issues/1957#issuecomment-271057166
-    sudo apt-get install groff-base && \
-    sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
-    rm awscli-bundle.zip && \
-    rm -rf awscli-bundle
+RUN sudo apt-get install -y rsync awscli
+RUN sudo npm install -g yarn@1.0.0
 
 RUN set -x \
     VER="17.12.1-ce" \
