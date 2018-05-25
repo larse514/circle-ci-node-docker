@@ -2,7 +2,12 @@ FROM circleci/node:8.4.0
 MAINTAINER andrew.larsen@vernonsoftwaresolutoins.com
 
 # Install awscli
-RUN sudo apt-get install -y rsync awscli
+RUN sudo apt-get install python-pip python-dev build-essential \
+&& sudo pip install --upgrade pip \
+&& sudo pip install --upgrade virtualenv 
+RUN sudo curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && \ 
+sudo unzip awscli-bundle.zip && \
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 RUN sudo npm install -g yarn@1.0.0
 
 RUN set -x \
