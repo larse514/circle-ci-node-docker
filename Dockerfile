@@ -1,4 +1,4 @@
-FROM circleci/node:8.4.0
+FROM circleci/node:10.15.0-browsers
 MAINTAINER andrew.larsen@vernonsoftwaresolutoins.com
 
 # Install awscli
