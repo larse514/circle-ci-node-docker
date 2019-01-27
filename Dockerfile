@@ -9,6 +9,8 @@ RUN sudo curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bu
 sudo unzip awscli-bundle.zip && \
 sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 RUN sudo npm install -g yarn@1.0.0
+#Install newman 
+RUN sudo npm install newman -g
 
 RUN set -x \
     VER="17.12.1-ce" \
