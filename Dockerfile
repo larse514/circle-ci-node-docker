@@ -17,4 +17,7 @@ RUN set -x \
     mv /tmp/docker/* /usr/bin
 WORKDIR /
 
+#Install make
+RUN sudo apt-get install --reinstall make
+
 ENTRYPOINT ["/bin/bash"]
