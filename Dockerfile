@@ -29,4 +29,6 @@ RUN sudo wget https://releases.hashicorp.com/terraform/0.12.2/terraform_0.12.2_l
 
 RUN terraform --version 
 
+RUN sudo apt-get install ruby-full
+
 ENTRYPOINT ["/bin/bash"]
