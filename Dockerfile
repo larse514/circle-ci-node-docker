@@ -2,7 +2,8 @@ FROM circleci/node:10.15.0-browsers
 MAINTAINER andrew.larsen@vernonsoftwaresolutoins.com
 
 # Install awscli
-RUN sudo apt-get install python-pip python-dev build-essential \
+RUN sudo apt-get update
+RUN sudo apt-get install python-pip python-dev build-essential unzip \
 && sudo pip install --upgrade pip \
 && sudo pip install --upgrade virtualenv 
 RUN sudo curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && \ 
@@ -21,5 +22,11 @@ WORKDIR /
 
 #Install make
 RUN sudo apt-get install --reinstall make
+#install terraform 
+RUN sudo wget https://releases.hashicorp.com/terraform/0.12.2/terraform_0.12.2_linux_amd64.zip \
+&& sudo unzip terraform_0.12.2_linux_amd64.zip \
+&& sudo mv terraform /usr/local/bin/
+
+RUN terraform --version 
 
 ENTRYPOINT ["/bin/bash"]
