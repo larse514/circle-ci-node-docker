@@ -31,4 +31,4 @@ RUN terraform --version
 
 RUN sudo apt-get install ruby-full
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "-l", "-c"]
